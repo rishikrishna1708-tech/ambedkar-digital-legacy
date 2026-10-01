@@ -1,0 +1,161 @@
+{
+  "state": {
+    "faiss_total": 28,
+    "adl_faiss": 18,
+    "demo_faiss": 10,
+    "faiss_ntotal": 28,
+    "faiss_dim": 1024,
+    "sqlite_total": 28,
+    "fts_total": 28,
+    "adl_fts": 18,
+    "embedding_model": "BAAI/bge-m3",
+    "embedding_dim": 1024
+  },
+  "test5_adl_retrieval": {
+    "query": "What is my ideal of a society?",
+    "evidence_gate_passed": true,
+    "evidence_gate_reason": "Archival evidence verified successfully.",
+    "fts_count": 2,
+    "dense_count": 15,
+    "top_verified": {
+      "chunk_id": "ADL-MS-0004-C003",
+      "document_id": "ADL-MS-0004",
+      "title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)",
+      "content": "ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated living, of conjoint commu\nIt is essentially an attitude of respect and reverence towards fellow men.",
+      "collection": "Historical Treatises & Public Addresses",
+      "author": "Dr. B. R. Ambedkar",
+      "section_title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936) (Page 2)",
+      "page": 2,
+      "provenance_type": "USER-UPLOADED DATA",
+      "score": 11.418969677880419,
+      "fts_rank": 1,
+      "rrf_score": 0.03278688524590164,
+      "dense_rank": 1,
+      "matched_modes": [
+        "lexical",
+        "dense"
+      ],
+      "rrf_rank": 1,
+      "normalized_score": 1.0,
+      "rerank_score": 1.0,
+      "relevance_label": "Highly relevant",
+      "db_verified": true,
+      "doc_verification_status": "VERIFIED SOURCE"
+    },
+    "fts_top": {
+      "chunk_id": "ADL-MS-0004-C003",
+      "document_id": "ADL-MS-0004",
+      "title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)",
+      "content": "ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated living, of conjoint commu\nIt is essentially an attitude of respect and reverence towards fellow men.",
+      "collection": "Historical Treatises & Public Addresses",
+      "author": "Dr. B. R. Ambedkar",
+      "section_title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936) (Page 2)",
+      "page": 2,
+      "provenance_type": "VERIFIED SOURCE",
+      "score": 11.418969677880419,
+      "fts_rank": 1
+    },
+    "dense_top": {
+      "vector_id": 26,
+      "chunk_id": "ADL-MS-0004-C003",
+      "document_id": "ADL-MS-0004",
+      "page": 2,
+      "page_number": 2,
+      "section_title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936) (Page 2)",
+      "title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)",
+      "collection": "Historical Treatises & Public Addresses",
+      "author": "Dr. B. R. Ambedkar",
+      "content": "ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated living, of conjoint commu\nIt is essentially an attitude of respect and reverence towards fellow men.",
+      "provenance_type": "VERIFIED SOURCE",
+      "verification_status": "VERIFIED SOURCE",
+      "score": 0.7153637409210205,
+      "dense_rank": 1
+    }
+  },
+  "test6_ask_api": {
+    "query": "What is my ideal of a society?",
+    "evidence_gate_passed": true,
+    "evidence_gate_reason": "Archival evidence verified successfully.",
+    "adl_ms_0004_cited": true,
+    "sources": [
+      {
+        "document_id": "ADL-MS-0004",
+        "title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)",
+        "collection": "Historical Treatises & Public Addresses",
+        "author": "Dr. B. R. Ambedkar",
+        "page": 2,
+        "section_title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936) (Page 2)",
+        "relevance_percent": 100,
+        "evidence_snippet": "ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated li...",
+        "verification_status": "VERIFIED SOURCE",
+        "provenance_type": "USER-UPLOADED DATA"
+      }
+    ]
+  },
+  "test7a_demo_regression": {
+    "query": "What did Ambedkar say about social democracy?",
+    "evidence_gate_passed": true,
+    "fts_top": {
+      "chunk_id": "CAD_FIN_C01",
+      "document_id": "CAD_FINAL_SPEECH_1949",
+      "title": "Closing Address to the Constituent Assembly: Social Democracy",
+      "content": "In his historic closing address on 25 November 1949, Dr. Ambedkar defined social democracy: 'Political democracy cannot last unless there lies at the base of it social democracy. What does social democracy mean? It means a way of life which recognizes liberty, equality and fraternity as the principles of life.' He emphasized that these principles form an inseparable trinity: without equality, liberty produces supremacy of the few; without liberty, equality suffocates individual initiative.",
+      "collection": "Constituent Assembly Debates Archive",
+      "author": "Dr. B. R. Ambedkar",
+      "section_title": "Definition of Social Democracy & Political Democracy",
+      "page": 12,
+      "provenance_type": "DEMO DATA",
+      "score": 3.8036848902147185,
+      "fts_rank": 1
+    },
+    "dense_top": {
+      "vector_id": 7,
+      "chunk_id": "CAD_FIN_C01",
+      "document_id": "CAD_FINAL_SPEECH_1949",
+      "page": 12,
+      "page_number": 12,
+      "section_title": "Definition of Social Democracy & Political Democracy",
+      "title": "Closing Address to the Constituent Assembly: Social Democracy",
+      "collection": "Constituent Assembly Debates Archive",
+      "author": "Dr. B. R. Ambedkar",
+      "content": "In his historic closing address on 25 November 1949, Dr. Ambedkar defined social democracy: 'Political democracy cannot last unless there lies at the base of it social democracy. What does social democracy mean? It means a way of life which recognizes liberty, equality and fraternity as the principles of life.' He emphasized that these principles form an inseparable trinity: without equality, liberty produces supremacy of the few; without liberty, equality suffocates individual initiative.",
+      "provenance_type": "DEMO DATA",
+      "verification_status": "VERIFIED SOURCE",
+      "score": 0.7017934918403625,
+      "dense_rank": 1
+    }
+  },
+  "test7b_real_regression": {
+    "query": "What are the fundamental rights of citizens in the constitution?",
+    "evidence_gate_passed": true,
+    "fts_top": {
+      "chunk_id": "ADL-MS-0001-C002",
+      "document_id": "ADL-MS-0001",
+      "title": "States and Minorities: What are their Rights and How to Secure them in the Constitution of Free India",
+      "content": "ARTICLE II \u2014 FUNDAMENTAL RIGHTS OF CITIZENS",
+      "collection": "Constitutional Documents & Memoranda",
+      "author": "Dr. B. R. Ambedkar",
+      "section_title": "States and Minorities: What are their Rights and How to Secure them in the Constitution of Free India (Page 1)",
+      "page": 1,
+      "provenance_type": "VERIFIED SOURCE",
+      "score": 3.619102645104668,
+      "fts_rank": 1
+    },
+    "dense_top": {
+      "vector_id": 12,
+      "chunk_id": "ADL-MS-0001-C003",
+      "document_id": "ADL-MS-0001",
+      "page": 1,
+      "page_number": 1,
+      "section_title": "States and Minorities: What are their Rights and How to Secure them in the Constitution of Free India (Page 1)",
+      "title": "States and Minorities: What are their Rights and How to Secure them in the Constitution of Free India",
+      "collection": "Constitutional Documents & Memoranda",
+      "author": "Dr. B. R. Ambedkar",
+      "content": "Clause 1: The Constitution of the United States of India shall declare that Fundamental Rights are the birthright of every citizen.",
+      "provenance_type": "VERIFIED SOURCE",
+      "verification_status": "VERIFIED SOURCE",
+      "score": 0.6490416526794434,
+      "dense_rank": 1
+    }
+  }
+}

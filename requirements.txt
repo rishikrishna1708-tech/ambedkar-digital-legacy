@@ -1,0 +1,28 @@
+# AMBEDKAR DIGITAL LEGACY — AI-Powered Heritage & Research Platform
+# Requirements
+
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+python-multipart>=0.0.9
+httpx>=0.27.0
+numpy>=1.25.0
+faiss-cpu>=1.8.0
+
+# Phase II: Real semantic embeddings (BGE-M3, dim=1024)
+# Install: pip install torch>=2.0.0 --index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+sentence-transformers>=2.5.0
+transformers>=4.30.0
+tokenizers>=0.13.0
+huggingface-hub>=0.20.0
+safetensors>=0.4.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# PDF processing and facsimile generation
+pymupdf>=1.24.0
+
+# Optional: OCR with bounding boxes and per-token confidence
+# Not installed in current environment; install when needed:
+# paddleocr>=2.7.0

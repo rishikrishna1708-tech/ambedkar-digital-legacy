@@ -1,0 +1,173 @@
+{
+  "routes": {
+    "/admin": {
+      "status": 200,
+      "bytes": 15054
+    },
+    "/archive-view": {
+      "status": 200,
+      "bytes": 7100
+    },
+    "/manuscripts": {
+      "status": 200,
+      "bytes": 13528
+    },
+    "/ask": {
+      "status": 200,
+      "bytes": 21729
+    }
+  },
+  "upload": {
+    "status": "success",
+    "document_id": "ADL-MS-0004",
+    "original_filename": "adl_annihilation_of_caste_1936.pdf",
+    "file_type": "PDF",
+    "file_size": 1920,
+    "sha256_hash": "42343962c087e23311b1f36408413b0f8743f71698bcec0335fbd0ab2fa7002c",
+    "pages_processed": 2,
+    "ocr_status": "pending_review",
+    "verification_status": "UNVERIFIED (NEW INGESTION)",
+    "provenance_type": "USER-UPLOADED DATA",
+    "message": "Document 'Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)' preserved under ID ADL-MS-0004. OCR extracted and queued for archivist review."
+  },
+  "db_record": {
+    "id": "ADL-MS-0004",
+    "title": "Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)",
+    "type": "Manuscript",
+    "year": 1936,
+    "date_str": "1936",
+    "collection": "Historical Treatises & Public Addresses",
+    "author": "Dr. B. R. Ambedkar",
+    "language": "en",
+    "source_institution": "Ambedkar Memorial Archives / Jat-Pat-Todak Mandal Historical Collection",
+    "source_url": "/uploads/ADL-MS-0004.pdf",
+    "page_count": 2,
+    "digitization_method": "PyMuPDF High-Resolution Ingestion Pipeline",
+    "ocr_status": "pending_review",
+    "verification_status": "UNVERIFIED (NEW INGESTION)",
+    "provenance_type": "USER-UPLOADED DATA",
+    "summary": "Historic undelivered presidential address prepared for the 1936 Annual Conference of the Jat-Pat-Todak Mandal of Lahore.",
+    "created_at": "2026-09-24 06:49:00",
+    "original_filename": "adl_annihilation_of_caste_1936.pdf",
+    "file_path": "C:\\Users\\USER\\Downloads\\new\\daic-archive\\data\\uploads\\ADL-MS-0004.pdf",
+    "file_type": "PDF",
+    "file_size": 1920,
+    "sha256_hash": "42343962c087e23311b1f36408413b0f8743f71698bcec0335fbd0ab2fa7002c"
+  },
+  "facsimiles": {
+    "p1": {
+      "path": "data/uploads/ADL-MS-0004_p1.png",
+      "bytes": 34175
+    },
+    "p2": {
+      "path": "data/uploads/ADL-MS-0004_p2.png",
+      "bytes": 52074
+    }
+  },
+  "ocr_records": [
+    {
+      "id": "ocr_ADL-MS-0004_p1",
+      "page": 1,
+      "image_path": "/uploads/ADL-MS-0004_p1.png",
+      "confidence": null,
+      "archivist_status": "pending_review",
+      "recognized_text": "ANNIHILATION OF CASTE: AN UNDELIVERED ADDRESS\nBy Dr. B. R. Ambedkar, M.A., Ph.D., D.Sc., Barrister-at-Law\nLet me begin with a confession. I made a mistake in accepting the invitation to preside over this function. I a"
+    },
+    {
+      "id": "ocr_ADL-MS-0004_p2",
+      "page": 2,
+      "image_path": "/uploads/ADL-MS-0004_p2.png",
+      "confidence": null,
+      "archivist_status": "pending_review",
+      "recognized_text": "ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated living, of conjoint commu\nIt is essentially an attitude of respect and reverence towards fellow men."
+    }
+  ],
+  "isolation": {
+    "pre_chunks": 0,
+    "pre_fts": 0,
+    "pre_faiss": 0,
+    "leaked_sources": 0
+  },
+  "review": {
+    "p1_res": {
+      "status": "success",
+      "ocr_id": "ocr_ADL-MS-0004_p1",
+      "document_id": "ADL-MS-0004",
+      "page": 1,
+      "archivist_status": "verified",
+      "verification_status": "VERIFIED SOURCE",
+      "chunks_indexed": 2,
+      "message": "OCR record ocr_ADL-MS-0004_p1 updated with status 'verified'. Indexed 2 chunk(s) into FTS5 and FAISS."
+    },
+    "p2_res": {
+      "status": "success",
+      "ocr_id": "ocr_ADL-MS-0004_p2",
+      "document_id": "ADL-MS-0004",
+      "page": 2,
+      "archivist_status": "verified",
+      "verification_status": "VERIFIED SOURCE",
+      "chunks_indexed": 2,
+      "message": "OCR record ocr_ADL-MS-0004_p2 updated with status 'verified'. Indexed 2 chunk(s) into FTS5 and FAISS."
+    }
+  },
+  "post_indexing": {
+    "chunk_count": 4,
+    "fts_count": 4,
+    "faiss_count": 4,
+    "doc_status": "VERIFIED SOURCE"
+  },
+  "retrieval": {
+    "Exact Keyword": {
+      "latency_ms": 633.59,
+      "stages": {
+        "fts_count": 1,
+        "dense_count": 10,
+        "rrf_candidates_count": 10,
+        "reranked_count": 5,
+        "verified_evidence_count": 1
+      },
+      "gate_passed": true,
+      "top_chunk": "ADL-MS-0004-C003",
+      "top_doc": "ADL-MS-0004",
+      "top_page": 2,
+      "score": 0.8214
+    },
+    "Semantic Query": {
+      "latency_ms": 679.07,
+      "stages": {
+        "fts_count": 0,
+        "dense_count": 10,
+        "rrf_candidates_count": 10,
+        "reranked_count": 5,
+        "verified_evidence_count": 1
+      },
+      "gate_passed": true,
+      "top_chunk": "CAD_FIN_C01",
+      "top_doc": "CAD_FINAL_SPEECH_1949",
+      "top_page": 12,
+      "score": 0.675
+    }
+  },
+  "ask": {
+    "verified": true,
+    "answer": "Based on archival records from **Annihilation of Caste: With a Reply to Mahatma Gandhi (1936)** (Page 2), the primary documentation in the section *\"Annihilation of Caste: With a Reply to Mahatma Gandhi (1936) (Page 2)\"* records:\n\n> \"ANNIHILATION OF CASTE (1936) - PAGE 2\nSECTION II: THE IDEAL OF AN ASSOCIATED SOCIETY\nWhat is my ideal of a society? If you ask me, my ideal would be a society based on Liberty, Equality, and Fra\nDemocracy is not merely a form of government; it is primarily a mode of associated living, of conjoint commu\nIt is essentially an attitude of respect and reverence t...\"\n\nThis is corroborated by additional records in **Closing Address to the Constituent Assembly: Social Democracy** (Page 12, *Definition of Social Democracy & Political Democracy*), which states that archival provisions directly addressed these institutional protections.",
+    "cited_doc": "ADL-MS-0004",
+    "cited_page": 2,
+    "status": "VERIFIED SOURCE"
+  },
+  "manuscript_viewer": {
+    "found": true,
+    "id": "ADL-MS-0004",
+    "facsimile_url": "/uploads/ADL-MS-0004_p1.png"
+  },
+  "catalogue": {
+    "found": true,
+    "id": "ADL-MS-0004",
+    "provenance": "USER-UPLOADED DATA",
+    "status": "VERIFIED SOURCE"
+  },
+  "demo_data": {
+    "count": 5,
+    "intact": true
+  }
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Manuscripts</title>
+  <meta name="description" content="Ambedkar Digital Legacy: Dual-pane interactive manuscript facsimile and OCR text verification viewer.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+</head>
+<body class="bg-[#F8F4E8] text-[#232832] flex flex-col min-h-screen">
+
+  <div id="global-header"></div>
+
+  <!-- Sub-header with Ambient Heritage Background -->
+  <div class="relative bg-[#0D1527] text-white py-4 border-b border-[#D7A940]/40 overflow-hidden">
+    <!-- Ambient 24-Spoke Chakra & Subtle Particles -->
+    <div class="ashoka-chakra hero-chakra parallax-layer" style="right: -80px; width: 440px; height: 440px; opacity: 0.045;" aria-hidden="true">
+      <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+    </div>
+    <div class="archive-particles" style="opacity: 0.45;" aria-hidden="true"></div>
+
+    <div class="global-container relative z-10">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-heading-cinzel text-xl sm:text-2xl font-bold text-white tracking-wide" data-i18n="manuscripts_title">Original Manuscripts & OCR Verification</h1>
+            <span class="badge-gold text-[10px] px-2 py-0.5 rounded font-bold uppercase">Archival Digitization</span>
+          </div>
+          <p class="text-xs text-gray-300 font-light mt-0.5" data-i18n="manuscripts_subtitle">
+            Dual-view comparative analysis of high-definition historical facsimiles alongside OCR recognized transcripts.
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <label class="text-xs text-gray-300 font-medium">Select Manuscript:</label>
+          <select id="manuscript-select" onchange="switchManuscript(this.value)" class="py-1 px-2.5 text-xs bg-gray-800 text-white border border-gray-600 rounded focus:outline-none">
+            <option value="MAHAD_SATYAGRAHA_1927">Mahad Satyagraha Declaration (1927)</option>
+            <option value="CAD_VOL_07_ART17">Draft Article 11 / Article 17 Record (1948)</option>
+            <option value="BAWS_VOL_10_LABOUR">Labour Member Proceedings (1942)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Digitization & Verification Pipeline Sequence (Requirement 11) -->
+      <div class="knowledge-network mt-3 pt-2.5 border-t border-gray-800/80" aria-hidden="true">
+        <div class="knowledge-network-track">
+          <span class="kn-node"><span class="kn-dot"></span> ORIGINAL MANUSCRIPT</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 0.5s;"></span> OCR SCAN</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 1.0s;"></span> RECOGNIZED TEXT</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 1.5s;"></span> VERIFICATION</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 2.0s;"></span> SEARCHABLE KNOWLEDGE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 global-container py-8 space-y-8">
+
+    <!-- Manuscripts Archival Records Grid -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="font-heading-cinzel text-lg font-bold text-[#141F39]">Preserved Archival Manuscripts</h2>
+          <p class="text-xs text-gray-600">Select any record to inspect facsimile, OCR blocks, or verify textual provenance.</p>
+        </div>
+        <span class="text-xs text-[#3B7558] font-bold bg-[#E8F3ED] px-2.5 py-1 rounded border border-[#B7DECA]">
+          ✓ Multi-pass OCR Verified
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="manuscript-catalog-cards">
+        <!-- Rendered dynamically via manuscripts.js -->
+      </div>
+    </div>
+
+    <!-- OCR Pipeline Status Bar -->
+    <div class="archival-card p-4 rounded-lg bg-white border border-[#E2DAC8]">
+      <div class="flex items-center justify-between pb-2 border-b border-gray-200 mb-3">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#3B7558]"></span>
+          <h3 class="font-heading-cinzel font-bold text-xs text-[#141F39]">Institutional Digitization & Verification Pipeline</h3>
+        </div>
+        <span class="text-[11px] text-[#8C5B08] font-bold bg-[#FFF6E5] px-2 py-0.5 rounded border border-[#F5D399]">
+          Archivist Validation Standard
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+        <div class="p-2.5 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+          <span class="w-5 h-5 rounded-full bg-[#3B7558] text-white flex items-center justify-center text-[10px] font-bold">✓</span>
+          <div>
+            <div class="font-bold text-[#141F39]">1. PDF / TIFF Loaded</div>
+            <div class="text-[10px] text-gray-500">600 DPI Multispectral</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+          <span class="w-5 h-5 rounded-full bg-[#3B7558] text-white flex items-center justify-center text-[10px] font-bold">✓</span>
+          <div>
+            <div class="font-bold text-[#141F39]">2. PyMuPDF Extraction</div>
+            <div class="text-[10px] text-gray-500">Page layout segmentation</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+          <span class="w-5 h-5 rounded-full bg-[#3B7558] text-white flex items-center justify-center text-[10px] font-bold">✓</span>
+          <div>
+            <div class="font-bold text-[#141F39]">3. PaddleOCR Engine</div>
+            <div class="text-[10px] text-gray-500">Multilingual text blocks</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+          <span class="w-5 h-5 rounded-full bg-[#3B7558] text-white flex items-center justify-center text-[10px] font-bold">✓</span>
+          <div>
+            <div class="font-bold text-[#141F39]">4. Search Indexed</div>
+            <div class="text-[10px] text-gray-500">FTS5 BM25 + FAISS Dense</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded bg-[#FAF8F1] border border-[#D7A940] flex items-center space-x-2">
+          <span class="w-5 h-5 rounded-full bg-[#D7A940] text-[#141F39] flex items-center justify-center text-[10px] font-bold">★</span>
+          <div>
+            <div class="font-bold text-[#141F39]">5. Curator Review</div>
+            <div class="text-[10px] text-[#8C5B08] font-bold">Verified by Curators</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dual-Pane Comparative Document Viewer (Desktop: Side-by-Side; Mobile: Image -> OCR) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="viewer-container">
+
+      <!-- LEFT PANE: High-Res Manuscript Facsimile -->
+      <div class="archival-card p-4 rounded-lg flex flex-col justify-between" id="facsimile-pane">
+        <div>
+          <div class="flex items-center justify-between pb-2 border-b border-gray-200 mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-[#141F39]" data-i18n="label_original_facsimile">FACSIMILE ARTIFACT</span>
+              <span id="manuscript-page-badge" class="text-[10px] bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded font-mono">Page 4 of 18</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <button onclick="adjustZoom(-0.1)" class="p-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-mono" title="Zoom Out">−</button>
+              <span id="zoom-level-text" class="text-[10px] font-mono px-1">100%</span>
+              <button onclick="adjustZoom(0.1)" class="p-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-mono" title="Zoom In">+</button>
+            </div>
+          </div>
+
+          <!-- Facsimile Display Canvas Container -->
+          <div id="facsimile-container" class="h-96 bg-[#2B2926] rounded border border-gray-300 overflow-hidden flex items-center justify-center p-4 relative">
+            <!-- Subtle Archival Digitization Scan Line -->
+            <div class="ocr-scan-line" aria-hidden="true"></div>
+            <div id="facsimile-canvas" class="bg-[#F4ECE1] text-[#2C241E] p-6 shadow-2xl rounded max-w-sm w-full font-serif-archival border border-[#D5C2A5] transform transition-transform duration-150 relative z-10">
+              <!-- Rendered Historical Facsimile Simulation -->
+              <div class="border-b border-[#A68F74] pb-2 text-center text-xs tracking-widest uppercase font-bold text-[#4A3B2C]">
+                Maharashtra State Archives • Historical Record
+              </div>
+              <div class="py-4 space-y-3 text-xs leading-relaxed italic text-[#2A231D]">
+                <p class="font-bold text-center not-italic text-sm text-[#141F39]">CHAVDAR TALE PROCLAMATION (1927)</p>
+                <p>
+                  "We are not going to the Chavdar Tank merely to drink water. We are going to the tank to assert that we too are human beings like others. It must be clearly understood that this struggle is not for water alone, but for fundamental human equality."
+                </p>
+                <div class="pt-4 text-right text-[10px] text-[#5C4D3E]">
+                  — Bahishkrit Hitakarini Sabha Records
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
+          <span>Digitization Resolution: 600 DPI Color Multi-pass</span>
+          <button onclick="toggleCompareOverlay()" id="compare-btn" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded font-semibold text-xs border border-gray-300">
+            Compare Original / OCR
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT PANE: OCR Text Transcript & Verification -->
+      <div class="archival-card p-4 rounded-lg flex flex-col justify-between" id="ocr-pane">
+        <div>
+          <div class="flex items-center justify-between pb-2 border-b border-gray-200 mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-[#141F39]" data-i18n="label_ocr_transcript">OCR RECOGNIZED TRANSCRIPT</span>
+              <span class="text-[10px] bg-[#E8F3ED] text-[#245A3F] px-1.5 py-0.5 rounded font-bold">PaddleOCR v2.7</span>
+            </div>
+            <span id="ocr-confidence-badge" class="text-xs font-semibold text-[#3B7558]">Confidence: 94.8%</span>
+          </div>
+
+          <!-- Transcript Content -->
+          <div id="ocr-text-blocks" class="h-96 bg-[#FAF8F1] rounded border border-gray-200 p-4 overflow-y-auto space-y-3 font-mono text-xs text-gray-800">
+            <div class="p-2 rounded bg-white border border-gray-200 space-y-1">
+              <div class="flex justify-between text-[10px] text-gray-400">
+                <span>Block 1 [Coordinates: (45, 60, 520, 110)]</span>
+                <span class="text-green-700 font-bold">96% Conf.</span>
+              </div>
+              <div class="font-sans font-bold text-[#141F39]">CHAVDAR TALE PROCLAMATION (1927)</div>
+            </div>
+
+            <div class="p-2 rounded bg-white border border-gray-200 space-y-1">
+              <div class="flex justify-between text-[10px] text-gray-400">
+                <span>Block 2 [Coordinates: (45, 120, 520, 240)]</span>
+                <span class="text-green-700 font-bold">94.2% Conf.</span>
+              </div>
+              <div class="font-sans text-gray-800 leading-relaxed">
+                "We are not going to the Chavdar Tank merely to drink water. We are going to the tank to assert that we too are human beings like others. It must be clearly understood that this struggle is not for water alone, but for fundamental human equality."
+              </div>
+            </div>
+
+            <div class="p-2 rounded bg-white border border-gray-200 space-y-1">
+              <div class="flex justify-between text-[10px] text-gray-400">
+                <span>Block 3 [Coordinates: (45, 260, 520, 310)]</span>
+                <span class="text-green-700 font-bold">93.5% Conf.</span>
+              </div>
+              <div class="font-sans text-gray-600">
+                — Bahishkrit Hitakarini Sabha Records, Mahad Conference Proceedings.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-xs">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-500">Curator Review:</span>
+            <span class="font-bold text-[#3B7558]">✓ Verified by Chief Archivist</span>
+          </div>
+          <button id="save-ocr-research-btn" onclick="saveActiveOcrToResearch()" class="text-[#D7A940] hover:text-[#B88B28] font-bold text-xs">
+            + Save Transcript to Research
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Metadata & Archival Provenance Dossier -->
+    <div class="archival-card p-6 rounded-lg bg-white">
+      <h3 class="font-heading-cinzel font-bold text-sm text-[#141F39] mb-4 pb-2 border-b border-gray-200">
+        Archival Provenance & Ingestion Metadata
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs text-gray-700" id="manuscript-provenance-dossier">
+        <div>
+          <div class="text-gray-500 font-medium">Source Institution:</div>
+          <div id="dossier-inst" class="font-bold text-[#141F39] mt-0.5">Maharashtra State Archives</div>
+        </div>
+        <div>
+          <div class="text-gray-500 font-medium">Collection:</div>
+          <div id="dossier-coll" class="font-bold text-[#141F39] mt-0.5">Historical Records & Manuscripts</div>
+        </div>
+        <div>
+          <div class="text-gray-500 font-medium">Document ID:</div>
+          <div id="dossier-id" class="font-bold text-[#141F39] mt-0.5">MAHAD_SATYAGRAHA_1927</div>
+        </div>
+        <div>
+          <div class="text-gray-500 font-medium">Digitization Standard:</div>
+          <div class="font-bold text-[#141F39] mt-0.5">High-Definition Multispectral Facsimile (600 DPI)</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="global-footer"></div>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/manuscripts.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

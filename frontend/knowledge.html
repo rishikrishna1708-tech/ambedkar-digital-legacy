@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Knowledge</title>
+  <meta name="description" content="Ambedkar Digital Legacy: Interactive archival knowledge graph connecting people, ideas, documents, and historical events.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+</head>
+<body class="bg-[#F8F4E8] text-[#232832] flex flex-col min-h-screen">
+
+  <div id="global-header"></div>
+
+  <!-- Sub-header with Ambient Heritage Background -->
+  <div class="relative bg-[#0D1527] text-white py-4 border-b border-[#D7A940]/40 overflow-hidden">
+    <!-- Ambient 24-Spoke Chakra & Subtle Particles -->
+    <div class="ashoka-chakra hero-chakra parallax-layer" style="right: -80px; width: 440px; height: 440px; opacity: 0.045;" aria-hidden="true">
+      <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+    </div>
+    <div class="archive-particles" style="opacity: 0.45;" aria-hidden="true"></div>
+
+    <div class="global-container relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="font-heading-cinzel text-xl sm:text-2xl font-bold text-white tracking-wide" data-i18n="knowledge_title">Archival Knowledge Graph</h1>
+          <span class="badge-gold text-[10px] px-2 py-0.5 rounded font-bold uppercase">Semantic Graph</span>
+        </div>
+        <p class="text-xs text-gray-300 font-light mt-0.5" data-i18n="knowledge_subtitle">
+          Explore semantic relationships between historical figures, ideas, constitutional articles, and archival publications.
+        </p>
+      </div>
+
+      <!-- Entity Legend -->
+      <div class="flex flex-wrap items-center gap-2 text-[10px]">
+        <span class="flex items-center space-x-1 text-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-[#141F39] border border-[#D7A940]"></span><span>Person</span></span>
+        <span class="flex items-center space-x-1 text-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-[#3B7558]"></span><span>Idea</span></span>
+        <span class="flex items-center space-x-1 text-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-[#B88B28]"></span><span>Document</span></span>
+        <span class="flex items-center space-x-1 text-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-[#8C5B08]"></span><span>Event</span></span>
+        <span class="flex items-center space-x-1 text-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-[#4A5568]"></span><span>Institution</span></span>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 global-container py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[720px]">
+      
+      <!-- Interactive SVG/Canvas Graph Area (8 cols) -->
+      <div class="lg:col-span-8 archival-card rounded-lg p-2 bg-white relative flex flex-col border border-gray-300 overflow-hidden shadow-inner">
+        <div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2.5 py-1.5 rounded border border-gray-200 text-[11px] text-gray-600 flex items-center space-x-2">
+          <span>Click any node to inspect connected primary sources</span>
+        </div>
+
+        <svg id="knowledge-svg" class="w-full h-full cursor-grab active:cursor-grabbing">
+          <!-- Dynamic links and nodes rendered via knowledge.js -->
+        </svg>
+      </div>
+
+      <!-- Selected Entity Dossier Side Panel (4 cols) -->
+      <div class="lg:col-span-4 archival-card rounded-lg p-5 bg-white flex flex-col justify-between border border-gray-300 overflow-y-auto" id="entity-dossier-panel">
+        <div class="space-y-4">
+          <div class="pb-3 border-b border-gray-200">
+            <span id="dossier-category-badge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-gray-100 text-gray-700">
+              Entity Dossier
+            </span>
+            <h2 id="dossier-title" class="font-heading-cinzel font-bold text-lg text-[#141F39] mt-1">
+              Select an Entity
+            </h2>
+          </div>
+
+          <div>
+            <h4 class="text-[11px] font-bold text-gray-500 uppercase">Archival Context & Description</h4>
+            <p id="dossier-desc" class="text-xs text-gray-700 mt-1 leading-relaxed bg-[#FAF8F1] p-3 rounded border border-gray-100">
+              Click any node in the knowledge network on the left to review its primary source citations and relations to Ambedkar's works.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-[11px] font-bold text-gray-500 uppercase mb-2">Connected Relationships</h4>
+            <div id="dossier-relations-list" class="space-y-2 text-xs text-gray-600">
+              <p class="text-gray-400 italic">No node currently selected.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200 space-y-2" id="dossier-actions">
+          <button id="dossier-ask-btn" class="w-full py-2 px-3 bg-[#141F39] hover:bg-[#202E4E] text-[#D7A940] rounded font-bold text-xs transition-colors flex items-center justify-center space-x-1.5 border border-[#D7A940]">
+            <span>Ask Assistant About Entity</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="global-footer"></div>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/knowledge.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

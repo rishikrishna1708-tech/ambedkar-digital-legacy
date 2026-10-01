@@ -1,0 +1,171 @@
+{
+  "index_state": {
+    "total_docs": 9,
+    "demo_docs": 5,
+    "real_docs": 0,
+    "user_docs": 4,
+    "verified_docs": 4,
+    "pending_docs": 0,
+    "total_chunks": 28,
+    "fts_count": 28,
+    "faiss_meta": 28,
+    "faiss_ntotal": 28,
+    "faiss_dim": 1024,
+    "total_ocr": 7,
+    "ocr_verified": 7,
+    "embedding_model": "BAAI/bge-m3",
+    "embedding_dim": 1024
+  },
+  "cross_doc": [
+    {
+      "doc_id": "ADL-MS-0001",
+      "query": "fundamental rights citizens constitution memorandum",
+      "retrieved": true,
+      "top_doc": "ADL-MS-0001",
+      "top_chunk": "ADL-MS-0001-C002",
+      "top_page": 1,
+      "top_prov": "USER-UPLOADED DATA",
+      "gate": true,
+      "fts_n": 15,
+      "dense_n": 15
+    },
+    {
+      "doc_id": "ADL-MS-0002",
+      "query": "safeguards minorities rights provinces legislatures",
+      "retrieved": true,
+      "top_doc": "ADL-MS-0001",
+      "top_chunk": "ADL-MS-0001-C001",
+      "top_page": 1,
+      "top_prov": "USER-UPLOADED DATA",
+      "gate": true,
+      "fts_n": 13,
+      "dense_n": 15
+    },
+    {
+      "doc_id": "ADL-MS-0003",
+      "query": "states minorities scheduled castes india constitution",
+      "retrieved": true,
+      "top_doc": "ADL-MS-0001",
+      "top_chunk": "ADL-MS-0001-C001",
+      "top_page": 1,
+      "top_prov": "USER-UPLOADED DATA",
+      "gate": true,
+      "fts_n": 15,
+      "dense_n": 15
+    },
+    {
+      "doc_id": "ADL-MS-0004",
+      "query": "What is my ideal of a society?",
+      "retrieved": true,
+      "top_doc": "ADL-MS-0004",
+      "top_chunk": "ADL-MS-0004-C003",
+      "top_page": 2,
+      "top_prov": "USER-UPLOADED DATA",
+      "gate": true,
+      "fts_n": 2,
+      "dense_n": 15
+    }
+  ],
+  "search_validation": [
+    {
+      "query": "What is my ideal of a society?",
+      "kind": "exact-real",
+      "expected_prefix": "ADL-MS-0004",
+      "got": "ADL-MS-0004",
+      "match": true,
+      "fts_top": "ADL-MS-0004",
+      "gate": true,
+      "fts_n": 2,
+      "dense_n": 15
+    },
+    {
+      "query": "social democracy political democracy liberty fraternity",
+      "kind": "semantic-demo",
+      "expected_prefix": "CAD_FINAL",
+      "got": "CAD_FINAL_SPEECH_1949",
+      "match": true,
+      "fts_top": "CAD_FINAL_SPEECH_1949",
+      "gate": true,
+      "fts_n": 13,
+      "dense_n": 15
+    },
+    {
+      "query": "fundamental rights minorities constitution provinces",
+      "kind": "mixed-real",
+      "expected_prefix": "ADL-MS",
+      "got": "ADL-MS-0001",
+      "match": true,
+      "fts_top": "ADL-MS-0001",
+      "gate": true,
+      "fts_n": 15,
+      "dense_n": 15
+    },
+    {
+      "query": "reduction of working hours labour conference",
+      "kind": "exact-demo",
+      "expected_prefix": "BAWS",
+      "got": "BAWS_VOL_10_LABOUR",
+      "match": true,
+      "fts_top": "BAWS_VOL_10_LABOUR",
+      "gate": true,
+      "fts_n": 9,
+      "dense_n": 15
+    }
+  ],
+  "ask_ai": [
+    {
+      "question": "What is my ideal of a society?",
+      "expected": "ADL-MS-0004",
+      "got": "ADL-MS-0004",
+      "page": 2,
+      "prov": "USER-UPLOADED DATA",
+      "vstatus": "VERIFIED SOURCE",
+      "gate": true,
+      "correct": true
+    },
+    {
+      "question": "What are the fundamental rights of citizens?",
+      "expected": "ADL-MS-0001",
+      "got": "ADL-MS-0001",
+      "page": 1,
+      "prov": "USER-UPLOADED DATA",
+      "vstatus": "VERIFIED SOURCE",
+      "gate": true,
+      "correct": true
+    },
+    {
+      "question": "What did Ambedkar say about social democracy?",
+      "expected": "CAD_FINAL_SPEECH_1949",
+      "got": "CAD_FINAL_SPEECH_1949",
+      "page": 12,
+      "prov": "DEMO DATA",
+      "vstatus": "DEMO DATA",
+      "gate": true,
+      "correct": true
+    }
+  ],
+  "demo_regression": [
+    {
+      "query": "reduction of working hours labour conference",
+      "expected": "BAWS_VOL_10_LABOUR",
+      "got": "BAWS_VOL_10_LABOUR",
+      "retrieved": true
+    },
+    {
+      "query": "constituent assembly social democracy political",
+      "expected": "CAD_FINAL_SPEECH_1949",
+      "got": "CAD_FINAL_SPEECH_1949",
+      "retrieved": true
+    },
+    {
+      "query": "providence god religion caste",
+      "expected": "BAWS_VOL_05_PROVIDENCE",
+      "got": "ADL-MS-0001",
+      "retrieved": true
+    }
+  ],
+  "evidence_gate": {
+    "functional": true
+  },
+  "overall_pass": true
+}

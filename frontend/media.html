@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Media</title>
+  <meta name="description" content="Ambedkar Digital Legacy: Digitized historical audio, photographic stills, and archival documentaries.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+</head>
+<body class="bg-[#F8F4E8] text-[#232832] flex flex-col min-h-screen">
+
+  <div id="global-header"></div>
+
+  <!-- Sub-header with Ambient Heritage Background -->
+  <div class="relative bg-[#0D1527] text-white py-4 border-b border-[#D7A940]/40 overflow-hidden">
+    <!-- Ambient 24-Spoke Chakra & Subtle Particles -->
+    <div class="ashoka-chakra hero-chakra parallax-layer" style="right: -80px; width: 440px; height: 440px; opacity: 0.045;" aria-hidden="true">
+      <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+    </div>
+    <div class="archive-particles" style="opacity: 0.45;" aria-hidden="true"></div>
+
+    <div class="global-container relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="font-heading-cinzel text-xl sm:text-2xl font-bold text-white tracking-wide" data-i18n="media_title">Audio-Visual Archive</h1>
+          <span class="badge-gold text-[10px] px-2 py-0.5 rounded font-bold uppercase">Multimedia Repository</span>
+        </div>
+        <p class="text-xs text-gray-300 font-light mt-0.5" data-i18n="media_subtitle">
+          Archival recordings, speech narrations, and photographic documentation preserved under Ambedkar International Centre.
+        </p>
+      </div>
+
+      <!-- Media Type Filter Tabs -->
+      <div class="flex items-center space-x-1 text-xs">
+        <button onclick="filterMedia('All')" class="media-tab px-3 py-1.5 rounded font-semibold bg-[#D7A940] text-[#141F39]" data-type="All">All</button>
+        <button onclick="filterMedia('audio')" class="media-tab px-3 py-1.5 rounded font-medium text-gray-300 hover:text-white bg-gray-800" data-type="audio">Audio</button>
+        <button onclick="filterMedia('photo')" class="media-tab px-3 py-1.5 rounded font-medium text-gray-300 hover:text-white bg-gray-800" data-type="photo">Photographs</button>
+        <button onclick="filterMedia('documentary')" class="media-tab px-3 py-1.5 rounded font-medium text-gray-300 hover:text-white bg-gray-800" data-type="documentary">Documentaries</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 global-container py-8 space-y-6">
+
+    <!-- Active Dedicated Player Card -->
+    <div class="archival-card p-5 rounded-lg bg-white border border-[#D7A940] shadow-md" id="audio-player-banner">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 rounded-full bg-[#141F39] text-[#D7A940] flex items-center justify-center shrink-0 border border-[#D7A940]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-[#8C5B08] uppercase tracking-wider bg-[#FFF6E5] px-1.5 py-0.5 rounded">Archival Narration Player</span>
+            <h3 id="current-player-title" class="font-heading-cinzel font-bold text-sm text-[#141F39] mt-0.5">Select a media record to listen</h3>
+            <p id="current-player-desc" class="text-xs text-gray-500">Audio narration powered by Browser Speech Synthesis in selected language</p>
+          </div>
+        </div>
+
+        <!-- Voice Controls: Play, Pause, Stop, Speed -->
+        <div class="flex items-center space-x-2">
+          <button id="media-play-btn" onclick="togglePlayer()" class="voice-ctrl-btn bg-[#141F39] text-[#D7A940] hover:bg-[#202E4E] border border-[#D7A940]">
+            ▶ Play
+          </button>
+          <button id="media-pause-btn" onclick="window.DAIC.pauseSpeaking()" class="voice-ctrl-btn bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300">
+            Ⅱ Pause
+          </button>
+          <button id="media-stop-btn" onclick="stopPlayer()" class="voice-ctrl-btn bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300">
+            ■ Stop
+          </button>
+          <select id="player-speed" onchange="changeSpeed(this.value)" class="text-xs py-1.5 px-2 bg-gray-100 border border-gray-300 rounded font-semibold text-gray-700" title="Playback Speed">
+            <option value="0.75">0.75×</option>
+            <option value="1.0" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Media Grid: 3 cards desktop, 2 cards tablet, 1 card mobile -->
+    <div id="media-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Loaded dynamically via media.js -->
+    </div>
+
+  </main>
+
+  <div id="global-footer"></div>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/media.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Ask</title>
+  <meta name="description" content="Ask the Ambedkar Digital Legacy Archive: AI-Powered Research Assistant grounded strictly in verified primary evidence.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+</head>
+<body class="bg-[#F8F4E8] text-[#232832] flex flex-col min-h-screen">
+
+  <!-- Persistent Global Header -->
+  <div id="global-header"></div>
+
+  <!-- Page Header Sub-bar with Ambient Heritage Background -->
+  <div class="relative bg-[#0D1527] text-white py-4 border-b border-[#D7A940]/40 overflow-hidden">
+    <!-- Ambient 24-Spoke Chakra & Subtle Particles -->
+    <div class="ashoka-chakra hero-chakra parallax-layer" style="right: -100px; width: 450px; height: 450px; opacity: 0.045;" aria-hidden="true">
+      <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+    </div>
+    <div class="archive-particles" style="opacity: 0.45;" aria-hidden="true"></div>
+
+    <div class="global-container relative z-10">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-heading-cinzel text-xl sm:text-2xl font-bold text-white tracking-wide" data-i18n="ask_banner_title">ASK THE ARCHIVE</h1>
+            <span class="badge-verified text-[11px] px-2.5 py-0.5 rounded font-bold" data-i18n="label_verified_evidence">Evidence Grounded</span>
+          </div>
+          <p class="text-xs text-gray-300 font-light mt-0.5" data-i18n="ask_banner_subtitle">
+            Ask questions about Ambedkar's writings, speeches, constitutional debates and historical records.
+          </p>
+        </div>
+
+        <!-- Retrieval Trace Toggle -->
+        <div class="flex items-center space-x-3">
+          <button id="toggle-debug-btn" onclick="toggleDebugPanel()" class="text-xs font-semibold px-3 py-1.5 rounded bg-[#141F39] hover:bg-[#202E4E] text-[#D7A940] border border-[#D7A940]/60 transition-colors flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            <span id="debug-btn-text" data-i18n="trace_panel_title">Archival Retrieval Trace (RRF / FAISS / FTS5)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Archival Retrieval Knowledge Sequence (Requirement 12) -->
+      <div class="knowledge-network mt-3 pt-2.5 border-t border-gray-800/80" aria-hidden="true">
+        <div class="knowledge-network-track">
+          <span class="kn-node"><span class="kn-dot"></span> ARCHIVAL SOURCES</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 0.6s;"></span> RETRIEVAL (FTS5 + FAISS)</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 1.2s;"></span> EVIDENCE GATE</span>
+          <span class="kn-arrow">━━━━►</span>
+          <span class="kn-node"><span class="kn-dot" style="animation-delay: 1.8s;"></span> GROUNDED ANSWER</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Research Workspace (3-Column Layout) -->
+  <main class="flex-1 global-container py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- LEFT COLUMN: Search Input, History & Prompts (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        
+        <!-- Question Formulation Card -->
+        <div class="archival-card p-4 rounded-lg">
+          <h2 class="font-heading-cinzel font-bold text-xs uppercase text-[#141F39] tracking-wider mb-2" data-i18n="section_inquire_title">
+            Archival Research Inquiry
+          </h2>
+
+          <form id="ask-form" class="space-y-3">
+            <div class="relative">
+              <textarea 
+                id="question-input" 
+                rows="4" 
+                placeholder="Ask a question about Dr. Ambedkar's writings, speeches, or constitutional debates..." 
+                data-i18n-placeholder="ask_input_placeholder"
+                class="w-full p-2.5 text-xs text-[#141F39] bg-[#FAF8F1] border border-gray-300 rounded focus:ring-1 focus:ring-[#D7A940] focus:border-[#D7A940] focus:outline-none resize-none leading-relaxed"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Real-time Voice Recognition Banner -->
+            <div id="voice-listening-banner" class="hidden p-3 rounded bg-[#FAF8F1] border border-[#D7A940] space-y-2 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#141F39] flex items-center space-x-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+                  <span id="voice-lang-indicator">Listening — English</span>
+                </span>
+                <button type="button" onclick="stopVoiceInput()" class="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 text-red-800 border border-red-300 hover:bg-red-200" data-i18n="btn_stop_listening">
+                  ■ Stop
+                </button>
+              </div>
+              <div id="voice-live-transcript" class="text-[11px] text-gray-700 italic font-serif-archival bg-white p-2 rounded border border-gray-200 min-h-[32px]" data-i18n="speak_mic_prompt">
+                Speak clearly into your microphone...
+              </div>
+            </div>
+
+            <!-- Controls: Voice & Submit -->
+            <div class="flex items-center justify-between gap-2">
+              <button 
+                type="button" 
+                id="voice-input-btn" 
+                onclick="toggleVoiceInput()" 
+                title="Voice Input (Speech to Text in selected language)"
+                data-i18n-title="voice_input_tooltip"
+                class="p-2.5 rounded bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs flex items-center space-x-1.5 transition-colors border border-gray-300 font-medium"
+                aria-label="Toggle Voice Input"
+              >
+                <svg id="mic-icon" class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                </svg>
+                <span id="mic-status-text" class="text-xs font-semibold">Voice Input</span>
+              </button>
+
+              <button 
+                type="submit" 
+                id="submit-ask-btn"
+                class="flex-1 py-2.5 px-4 bg-[#141F39] hover:bg-[#202E4E] text-[#D7A940] font-bold text-xs rounded transition-all shadow flex items-center justify-center space-x-1.5 border border-[#D7A940]"
+              >
+                <span data-i18n="btn_inquire">Consult Archive</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Curated Preset Queries -->
+        <div class="archival-card p-4 rounded-lg">
+          <h3 class="font-heading-cinzel font-bold text-xs uppercase text-gray-700 tracking-wider mb-2" data-i18n="section_inquire_subtitle">
+            Suggested Archival Queries
+          </h3>
+          <div class="space-y-2">
+            <button onclick="setQuery('What did Ambedkar say about labour rights?')" class="w-full text-left p-2 rounded bg-[#FAF8F1] hover:bg-[#F3EEDB] text-xs text-[#141F39] font-medium border border-gray-200 transition-colors" data-i18n="q1_title">
+              • What did Ambedkar say about labour rights?
+            </button>
+            <button onclick="setQuery('Summarise the Mahad Satyagraha')" class="w-full text-left p-2 rounded bg-[#FAF8F1] hover:bg-[#F3EEDB] text-xs text-[#141F39] font-medium border border-gray-200 transition-colors" data-i18n="q2_title">
+              • Summarise the Mahad Satyagraha
+            </button>
+            <button onclick="setQuery('What does the drafting record say about Article 17?')" class="w-full text-left p-2 rounded bg-[#FAF8F1] hover:bg-[#F3EEDB] text-xs text-[#141F39] font-medium border border-gray-200 transition-colors" data-i18n="q3_title">
+              • What does the drafting record say about Article 17?
+            </button>
+            <button onclick="setQuery('How did Ambedkar define social democracy?')" class="w-full text-left p-2 rounded bg-[#FAF8F1] hover:bg-[#F3EEDB] text-xs text-[#141F39] font-medium border border-gray-200 transition-colors" data-i18n="q4_title">
+              • How did Ambedkar define social democracy?
+            </button>
+            <button onclick="setQuery('What were the resolutions of the 1999 space research?')" class="w-full text-left p-2 rounded bg-[#FFF5F5] hover:bg-[#FED7D7] text-xs text-red-800 font-medium border border-red-200 transition-colors" title="Test Negative / Out of Scope Query to see Evidence Gate reject safely">
+              ⚠ Test Unsupported Query (Evidence Gate rejection)
+            </button>
+          </div>
+        </div>
+
+        <!-- Pipeline Architecture Guarantee Card -->
+        <div class="p-3.5 rounded bg-white border border-gray-200 text-[11px] text-gray-600 space-y-1.5">
+          <div class="font-bold text-[#141F39] text-xs mb-1" data-i18n="section_guarantee_title">Archival Architecture Guarantee:</div>
+          <div>1. Sparse FTS5 (BM25) + Dense FAISS (BGE-M3)</div>
+          <div>2. Reciprocal Rank Fusion (k=60)</div>
+          <div>3. Re-ranking Chunks with Term Density</div>
+          <div>4. Strict Institutional Evidence Gate Threshold</div>
+          <div>5. Zero Fabricated Citations or Hallucinations</div>
+        </div>
+
+      </div>
+
+      <!-- CENTER COLUMN: Retrieval Visualizer, Grounded Answer & Explainability (6 cols) -->
+      <div class="lg:col-span-6 space-y-4">
+        
+        <!-- Live Retrieval Step Animation Container (Hidden until search starts) -->
+        <div id="retrieval-steps-card" class="archival-card p-4 rounded-lg hidden">
+          <div class="flex items-center justify-between pb-2 border-b border-gray-200 mb-3">
+            <span class="text-xs font-bold text-[#141F39] flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#D7A940] anim-pulse"></span>
+              <span>Executing Institutional Retrieval Pipeline...</span>
+            </span>
+            <span id="retrieval-elapsed-time" class="text-[10px] text-gray-500 font-mono">0ms</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px]">
+            <div id="step-fts" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>1. FTS5 / BM25</span>
+            </div>
+            <div id="step-faiss" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>2. FAISS Dense</span>
+            </div>
+            <div id="step-rrf" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>3. RRF Fusion</span>
+            </div>
+            <div id="step-rerank" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>4. Re-ranking</span>
+            </div>
+            <div id="step-gate" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>5. Evidence Gate</span>
+            </div>
+            <div id="step-synthesis" class="p-2 rounded bg-gray-50 border border-gray-200 flex items-center space-x-2">
+              <span class="status-indicator w-2 h-2 rounded-full bg-gray-400"></span>
+              <span>6. Grounded Answer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Initial Placeholder Welcome Card -->
+        <div id="welcome-research-card" class="archival-card p-8 rounded-lg text-center space-y-4">
+          <div class="w-14 h-14 mx-auto rounded-full bg-[#141F39] text-[#D7A940] flex items-center justify-center border-2 border-[#D7A940] shadow">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h2 class="font-heading-cinzel text-lg font-bold text-[#141F39]" data-i18n="welcome_title">
+            Archival Evidence-Grounded Research Engine
+          </h2>
+          <p class="text-xs text-gray-600 max-w-md mx-auto leading-relaxed">
+            Submit a question or select a suggested query. The system will retrieve verified primary sources, compute RRF fusion ranks, test against the Evidence Gate, and return a cited answer.
+          </p>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#F8F4E8] text-xs text-[#8C5B08] border border-[#EAD293]">
+            <span>Try asking: "What did Ambedkar say about labour rights?"</span>
+          </div>
+        </div>
+
+        <!-- Grounded Answer Card (Rendered dynamically) -->
+        <div id="answer-card" class="archival-card p-6 rounded-lg hidden space-y-4">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-gray-200 gap-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold font-heading-cinzel text-[#141F39] tracking-wider uppercase" data-i18n="label_answer">ANSWER</span>
+              <span id="evidence-status-badge" class="badge-verified text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center space-x-1">
+                <span data-i18n="label_verified_evidence">✓ Verified Archival Evidence</span>
+              </span>
+            </div>
+
+            <!-- Voice Controls: Play, Pause, Stop, Speed -->
+            <div class="flex items-center space-x-2">
+              <button id="answer-play-btn" onclick="playAnswerAudio()" title="Play narration" class="voice-ctrl-btn bg-[#141F39] text-[#D7A940] hover:bg-[#202E4E] border border-[#D7A940]">
+                ▶ Play
+              </button>
+              <button id="answer-pause-btn" onclick="DAIC.pauseSpeaking()" title="Pause narration" class="voice-ctrl-btn bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300">
+                Ⅱ Pause
+              </button>
+              <button id="answer-stop-btn" onclick="DAIC.stopSpeaking()" title="Stop narration" class="voice-ctrl-btn bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300">
+                ■ Stop
+              </button>
+              <select id="answer-speed-select" onchange="DAIC.setSpeechRate(this.value)" class="text-xs py-1 px-1.5 bg-gray-100 border border-gray-300 rounded font-semibold text-gray-700" title="Playback Speed">
+                <option value="0.75">0.75×</option>
+                <option value="1.0" selected>1×</option>
+                <option value="1.25">1.25×</option>
+                <option value="1.5">1.5×</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Answer Body -->
+          <div>
+            <div id="answer-text" class="text-sm text-[#141F39] leading-relaxed space-y-3 font-normal">
+              <!-- Inserted text -->
+            </div>
+          </div>
+
+          <!-- Insufficient Evidence Notice (Shown if failed) -->
+          <div id="insufficient-evidence-notice" class="hidden p-3 rounded bg-red-50 border border-red-200 text-xs text-red-700 space-y-1">
+            <div class="font-bold flex items-center space-x-1">
+              <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <span>Evidence Insufficient</span>
+            </div>
+            <p>The archive does not contain enough verified evidence to answer this question confidently. To maintain strict historical integrity, the assistant refuses to generate ungrounded answers.</p>
+          </div>
+
+          <!-- Footer Actions -->
+          <div class="pt-3 border-t border-gray-200 flex flex-wrap items-center justify-between text-xs text-gray-500 gap-2">
+            <div class="flex items-center space-x-2">
+              <span>Was this research helpful?</span>
+              <button onclick="submitFeedback(1)" class="hover:text-green-700 text-sm" title="Helpful">👍</button>
+              <button onclick="submitFeedback(-1)" class="hover:text-red-700 text-sm" title="Not grounded">👎</button>
+            </div>
+            <button onclick="saveAnswerToResearch()" class="text-[#D7A940] hover:text-[#B88B28] font-bold text-xs flex items-center space-x-1">
+              <span data-i18n="btn_add_notebook">+ Add to Research</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Explainability / Retrieval Debug Panel (Collapsible) -->
+        <div id="retrieval-debug-panel" class="archival-card p-5 rounded-lg border-2 border-gray-300 hidden bg-[#FAF8F1]">
+          <div class="flex items-center justify-between pb-2 border-b border-gray-300 mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#141F39] text-[#D7A940]">ARCHIVAL RETRIEVAL TRACE</span>
+              <h3 class="font-heading-cinzel font-bold text-xs text-[#141F39]">Hybrid Retrieval Pipeline Trace</h3>
+            </div>
+            <span id="debug-latency" class="text-[11px] font-mono text-gray-600"></span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <!-- Pipeline Flow Diagram -->
+            <div class="p-3 bg-white rounded border border-gray-200 font-mono text-[11px] text-gray-700 space-y-1">
+              <div id="debug-pipeline-summary">
+                QUERY → LEXICAL FTS5 (0) + SEMANTIC FAISS (0) → RRF FUSION (0) → RE-RANK (0) → EVIDENCE GATE → ANSWER
+              </div>
+            </div>
+
+            <!-- FTS5 vs FAISS Breakdown Table -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3 bg-white rounded border border-gray-200">
+                <div class="font-bold text-[#141F39] text-[11px] mb-1 flex items-center justify-between">
+                  <span>SQLite FTS5 / BM25 (Lexical)</span>
+                  <span id="debug-fts-count" class="text-gray-500 font-mono">0 matches</span>
+                </div>
+                <div id="debug-fts-list" class="space-y-1 text-[10px] text-gray-600 max-h-36 overflow-y-auto">
+                  <p class="text-gray-400 italic">No search performed yet.</p>
+                </div>
+              </div>
+
+              <div class="p-3 bg-white rounded border border-gray-200">
+                <div class="font-bold text-[#141F39] text-[11px] mb-1 flex items-center justify-between">
+                  <span>FAISS / BGE-M3 (Semantic)</span>
+                  <span id="debug-dense-count" class="text-gray-500 font-mono">0 matches</span>
+                </div>
+                <div id="debug-dense-list" class="space-y-1 text-[10px] text-gray-600 max-h-36 overflow-y-auto">
+                  <p class="text-gray-400 italic">No search performed yet.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Citation Quality Verification -->
+            <div class="p-3 bg-white rounded border border-gray-200">
+              <div class="font-bold text-[#141F39] text-[11px] mb-1">
+                Evidence Gate Verification Metric
+              </div>
+              <p class="text-[11px] text-gray-600">
+                Relevance Threshold: <code class="bg-gray-100 px-1 rounded text-gray-800 font-mono">score ≥ 0.005</code>.
+                Documents lacking authentic volume and page citations are stripped prior to synthesis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Supporting Archival Citations & Sources (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        
+        <div class="archival-card p-4 rounded-lg">
+          <div class="flex items-center justify-between pb-2 border-b border-gray-200 mb-3">
+            <h3 class="font-heading-cinzel font-bold text-xs uppercase text-[#141F39] tracking-wider">
+              Primary Sources Cited
+            </h3>
+            <span id="citations-count" class="badge-verified text-[10px] px-2 py-0.5 rounded font-bold">
+              0 sources
+            </span>
+          </div>
+
+          <div id="sources-container" class="space-y-3">
+            <div class="text-center py-8 text-gray-400 text-xs">
+              <svg class="w-8 h-8 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>Retrieved archival source cards will appear here.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Archival Provenance Standard Notice -->
+        <div class="p-3 bg-[#FAF8F1] rounded border border-[#E8E2D2] text-[11px] text-gray-600">
+          <div class="font-bold text-[#141F39] text-xs mb-1">Institutional Standard:</div>
+          <p class="leading-relaxed">Every fact presented is grounded directly in authenticated institutional volumes. You may inspect the original page via the "Open Original" button on any evidence card.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Persistent Global Footer -->
+  <div id="global-footer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/ask.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

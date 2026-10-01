@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Visitor Mode</title>
+  <meta name="description" content="Ambedkar Digital Legacy: Touch-friendly large-format memorial kiosk and museum visitor interface.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+  <style>
+    /* Kiosk Touch Enhancements */
+    .kiosk-btn {
+      min-height: 56px;
+      touch-action: manipulation;
+    }
+    .kiosk-card {
+      touch-action: manipulation;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .kiosk-card:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body class="bg-[#0D1527] text-white flex flex-col min-h-screen select-none font-sans relative overflow-x-hidden">
+
+  <!-- Ambient 24-Spoke Chakra & Subtle Particles for Museum Kiosk -->
+  <div class="ashoka-chakra hero-chakra parallax-layer" style="right: -40px; top: 35%; width: 560px; height: 560px; opacity: 0.045;" aria-hidden="true">
+    <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+  </div>
+  <div class="archive-particles" style="opacity: 0.35;" aria-hidden="true"></div>
+
+  <!-- Kiosk Top Header -->
+  <header class="bg-[#141F39] border-b-2 border-[#D7A940] px-6 py-4 flex items-center justify-between shadow-xl relative z-10">
+    <div class="flex items-center space-x-4">
+      <div class="w-12 h-12 rounded-full border-2 border-[#D7A940] bg-[#0D1527] flex items-center justify-center">
+        <svg class="w-8 h-8 text-[#D7A940]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v7M12 15v7M2 12h7M15 12h7"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="font-heading-cinzel text-xl sm:text-2xl font-bold tracking-wider text-white">AMBEDKAR DIGITAL LEGACY</h1>
+        <p class="text-xs text-[#D7A940] tracking-widest font-medium">MEMORIAL KIOSK • AMBEDKAR INTERNATIONAL CENTRE</p>
+      </div>
+    </div>
+
+    <!-- Kiosk Right Controls -->
+    <div class="flex items-center space-x-4">
+      <!-- Touch Language Selector -->
+      <div class="flex items-center bg-[#0D1527] rounded-lg p-1 border border-gray-700">
+        <button onclick="setKioskLanguage('en')" class="k-lang px-3 py-1.5 text-xs rounded font-bold bg-[#D7A940] text-[#141F39]" data-k-lang="en">EN</button>
+        <button onclick="setKioskLanguage('hi')" class="k-lang px-3 py-1.5 text-xs rounded font-medium text-gray-300 hover:text-white" data-k-lang="hi">हिन्दी</button>
+        <button onclick="setKioskLanguage('mr')" class="k-lang px-3 py-1.5 text-xs rounded font-medium text-gray-300 hover:text-white" data-k-lang="mr">मराठी</button>
+        <button onclick="setKioskLanguage('kn')" class="k-lang px-3 py-1.5 text-xs rounded font-medium text-gray-300 hover:text-white" data-k-lang="kn">ಕನ್ನಡ</button>
+        <button onclick="setKioskLanguage('ta')" class="k-lang px-3 py-1.5 text-xs rounded font-medium text-gray-300 hover:text-white" data-k-lang="ta">தமிழ்</button>
+      </div>
+
+      <!-- Exit Kiosk Mode Button -->
+      <a href="/" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-600 transition-colors">
+        Exit Kiosk
+      </a>
+    </div>
+  </header>
+
+  <!-- Kiosk Main Interactive Screen (1920x1080 optimized) -->
+  <main class="flex-1 global-container py-8 flex flex-col justify-between space-y-8">
+    
+    <!-- Hero Greeting & Prompt -->
+    <div class="text-center space-y-3">
+      <h2 class="font-heading-cinzel text-3xl sm:text-5xl font-bold text-white tracking-wide">
+        Touch to Explore Ambedkar's Legacy
+      </h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto font-light">
+        Listen to historical narrations, examine high-resolution original manuscripts, and explore constitutional history.
+      </p>
+    </div>
+
+    <!-- Large Touch Action Hub -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Touch Card 1: Ask the Archive with Voice -->
+      <div onclick="openKioskAskModal()" class="kiosk-card bg-[#141F39] rounded-xl p-6 border-2 border-[#D7A940] flex flex-col justify-between hover:border-white shadow-2xl cursor-pointer">
+        <div class="space-y-3">
+          <div class="w-14 h-14 rounded-xl bg-[#0D1527] text-[#D7A940] flex items-center justify-center border border-[#D7A940]/40">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+          </div>
+          <h3 class="font-heading-cinzel font-bold text-xl text-white">Voice & Ask</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">Speak or touch to type a question to receive a verified archival response backed by primary citations.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-700 flex items-center justify-between text-xs font-bold text-[#D7A940]">
+          <span>Touch to Inquire</span>
+          <span>→</span>
+        </div>
+      </div>
+
+      <!-- Touch Card 2: Manuscripts & OCR -->
+      <a href="/manuscripts" class="kiosk-card bg-[#141F39] rounded-xl p-6 border border-gray-700 flex flex-col justify-between hover:border-[#D7A940] shadow-2xl">
+        <div class="space-y-3">
+          <div class="w-14 h-14 rounded-xl bg-[#0D1527] text-[#3B7558] flex items-center justify-center border border-gray-600">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="font-heading-cinzel font-bold text-xl text-white">Manuscripts</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">Pinch and zoom through high-definition 600 DPI original facsimiles with synchronized OCR transcripts.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-700 flex items-center justify-between text-xs font-bold text-[#D7A940]">
+          <span>Inspect Facsimiles</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Touch Card 3: Interactive Timeline -->
+      <a href="/timeline-view" class="kiosk-card bg-[#141F39] rounded-xl p-6 border border-gray-700 flex flex-col justify-between hover:border-[#D7A940] shadow-2xl">
+        <div class="space-y-3">
+          <div class="w-14 h-14 rounded-xl bg-[#0D1527] text-[#B88B28] flex items-center justify-center border border-gray-600">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-heading-cinzel font-bold text-xl text-white">Timeline</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">Interactive historical timeline spanning 1891 to 1956 with spoken narrations for each major milestone.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-700 flex items-center justify-between text-xs font-bold text-[#D7A940]">
+          <span>Explore 1891–1956</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Touch Card 4: Audio Narration & Media -->
+      <a href="/media-view" class="kiosk-card bg-[#141F39] rounded-xl p-6 border border-gray-700 flex flex-col justify-between hover:border-[#D7A940] shadow-2xl">
+        <div class="space-y-3">
+          <div class="w-14 h-14 rounded-xl bg-[#0D1527] text-[#8C5B08] flex items-center justify-center border border-gray-600">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </div>
+          <h3 class="font-heading-cinzel font-bold text-xl text-white">Audio & Stills</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">Listen to historical speech excerpts and browse authentic photographic stills from the Constituent Assembly.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-700 flex items-center justify-between text-xs font-bold text-[#D7A940]">
+          <span>Listen to Audio</span>
+          <span>→</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Curated Kiosk Quick Inquiries Bar -->
+    <div class="bg-[#141F39] rounded-xl p-5 border border-gray-700">
+      <div class="text-xs font-bold uppercase tracking-wider text-[#D7A940] mb-3">
+        Popular Visitor Touch Inquiries
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <button onclick="kioskAskQuestion('What did Ambedkar say about labour rights?')" class="kiosk-btn p-3 bg-[#0D1527] hover:bg-[#1E2B4B] text-white rounded-lg text-xs font-medium text-left border border-gray-700 transition-colors">
+          "What did Ambedkar say about labour rights?"
+        </button>
+        <button onclick="kioskAskQuestion('Summarise the Mahad Satyagraha')" class="kiosk-btn p-3 bg-[#0D1527] hover:bg-[#1E2B4B] text-white rounded-lg text-xs font-medium text-left border border-gray-700 transition-colors">
+          "Summarise the Mahad Satyagraha"
+        </button>
+        <button onclick="kioskAskQuestion('What does the drafting record say about Article 17?')" class="kiosk-btn p-3 bg-[#0D1527] hover:bg-[#1E2B4B] text-white rounded-lg text-xs font-medium text-left border border-gray-700 transition-colors">
+          "What does the drafting record say about Article 17?"
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Kiosk Interactive Modal for Voice / Ask -->
+  <div id="kiosk-ask-modal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 hidden">
+    <div class="bg-[#141F39] border-2 border-[#D7A940] rounded-2xl max-w-2xl w-full p-6 shadow-2xl flex flex-col space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-gray-700">
+        <h3 class="font-heading-cinzel font-bold text-lg text-white">Ask the Archive (Touch / Voice)</h3>
+        <button onclick="closeKioskAskModal()" class="text-gray-400 hover:text-white p-2">✕</button>
+      </div>
+
+      <div class="space-y-3">
+        <textarea id="kiosk-input" rows="3" placeholder="Speak or touch here to type your inquiry..." class="w-full p-4 bg-[#0D1527] text-white text-base rounded-xl border border-gray-600 focus:outline-none focus:border-[#D7A940]"></textarea>
+        
+        <!-- Live Voice Listening State for Kiosk -->
+        <div id="kiosk-voice-status" class="hidden p-3 rounded-lg bg-[#0D1527] border border-[#D7A940] text-sm text-[#D7A940] flex items-center space-x-2">
+          <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+          <span id="kiosk-voice-text">Listening... Speak your research question</span>
+        </div>
+
+        <div class="flex space-x-3">
+          <button id="kiosk-mic-btn" onclick="startKioskVoice()" class="kiosk-btn flex-1 bg-[#24355A] hover:bg-[#2F4472] text-[#D7A940] rounded-xl font-bold flex items-center justify-center space-x-2 border border-[#D7A940]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+            <span id="kiosk-mic-btn-text">Touch to Speak</span>
+          </button>
+          <button onclick="submitKioskQuery()" class="kiosk-btn px-8 bg-[#D7A940] hover:bg-[#C29532] text-[#141F39] rounded-xl font-bold">
+            Consult
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-[#0D1527] border-t border-gray-800 py-3 text-center text-xs text-gray-500">
+    Ambedkar Digital Legacy • Memorial Kiosk Interface • Optimized for 1080p Touch Displays
+  </footer>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/visitor.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambedkar Digital Legacy | Home</title>
+  <meta name="description" content="Ambedkar Digital Legacy: AI-Powered Heritage & Research Platform. Dedicated digital heritage archive for Dr. B. R. Ambedkar.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/heritage-bg.css">
+</head>
+<body class="bg-[#F8F4E8] text-[#232832] flex flex-col min-h-screen">
+
+  <!-- Persistent Global Header -->
+  <div id="global-header"></div>
+
+  <!-- Hero Section with Premium Layered Heritage Background -->
+  <section class="relative bg-[#141F39] text-white py-16 lg:py-24 border-b-4 border-[#D7A940] overflow-hidden">
+    <!-- Layer 1: Deep Navy Gradient Background -->
+    <div class="archival-background hero-variant" aria-hidden="true"></div>
+
+    <!-- Layer 2: Rotating 24-Spoke Ashoka Chakra (Slow 100s rotation + Parallax) -->
+    <div class="ashoka-chakra hero-chakra parallax-layer" aria-hidden="true">
+      <img src="/assets/ashoka_chakra_24.svg" alt="" class="w-full h-full">
+    </div>
+
+    <!-- Layer 3: Faded Historical Dr. Ambedkar Archival Portrait (Monochrome/Duotone Vignette + Parallax) -->
+    <div class="ambedkar-portrait parallax-layer" aria-hidden="true">
+      <img src="/assets/ambedkar_historical_portrait.jpg" alt="">
+    </div>
+
+    <!-- Layer 4: Floating Archival Document & Constitution Layers (Slow Drift + Parallax) -->
+    <div class="archival-document doc-layer-1 parallax-layer" aria-hidden="true">
+      <img src="/assets/constitution_fragment.svg" alt="" class="w-full h-full object-contain">
+    </div>
+    <div class="archival-document doc-layer-2 parallax-layer" aria-hidden="true">
+      <img src="/uploads/ADL-MS-0001_p1.png" alt="" class="w-full h-full object-cover rounded shadow-lg">
+    </div>
+    <div class="archival-document doc-layer-3 parallax-layer" aria-hidden="true">
+      <img src="/uploads/ADL-MS-0004_p1.png" alt="" class="w-full h-full object-cover rounded shadow-lg">
+    </div>
+
+    <!-- Layer 5: Digital Archive Particles (18-24 Slow Gold Nodes with Hairline Connections) -->
+    <div class="archive-particles parallax-layer" aria-hidden="true"></div>
+
+    <!-- Subtle Archival Digitization Scan Line -->
+    <div class="ocr-scan-line" aria-hidden="true"></div>
+
+    <div class="global-container text-center relative z-10">
+      
+      <!-- Institutional Tag -->
+      <div class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-[#0D1527] border border-[#D7A940]/60 text-xs text-[#D7A940] mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#3B7558]"></span>
+        <span class="font-medium tracking-wide">
+          <span data-i18n="institution_label">Digital Heritage Archive</span> • <span data-i18n="institution_center">Ambedkar International Centre</span>
+        </span>
+      </div>
+
+      <!-- Hero Heading -->
+      <h1 class="font-heading-cinzel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-2 leading-tight" data-i18n="app_title">
+        AMBEDKAR DIGITAL LEGACY
+      </h1>
+      <div class="text-base sm:text-2xl text-[#D7A940] font-medium tracking-wide mb-6" data-i18n="app_subtitle">
+        AI-Powered Heritage & Research Platform
+      </div>
+
+      <!-- Subtitle -->
+      <p class="text-sm sm:text-lg text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed" data-i18n="hero_subtitle">
+        Explore writings, speeches, manuscripts, constitutional debates, photographs and historical records through a verified digital archive.
+      </p>
+
+      <!-- Large Interactive Ask / Search Box -->
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-2xl p-2 border-2 border-[#D7A940] mb-8">
+        <form action="/ask" method="GET" class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
+          <div class="relative flex-1 w-full flex items-center pl-3">
+            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input 
+              type="text" 
+              name="q" 
+              id="hero-search-input"
+              placeholder="Ask anything about Ambedkar's works, speeches, or constitutional records..." 
+              data-i18n-placeholder="search_placeholder"
+              class="w-full py-3 text-sm text-[#141F39] placeholder-gray-500 focus:outline-none bg-transparent"
+              required
+            >
+          </div>
+          <button 
+            type="submit" 
+            class="w-full sm:w-auto px-6 py-3 bg-[#141F39] hover:bg-[#202E4E] text-[#D7A940] font-semibold text-sm rounded shadow transition-all flex items-center justify-center space-x-2 shrink-0 border border-[#D7A940]"
+          >
+            <span data-i18n="btn_ask_archive">Ask the Archive</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Action Buttons: Primary & Secondary -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <!-- Primary Action 1 -->
+        <a href="/archive-view" class="px-5 py-2.5 rounded bg-[#D7A940] hover:bg-[#C29532] text-[#141F39] font-bold text-sm shadow transition-all flex items-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span data-i18n="btn_explore_archive">EXPLORE ARCHIVE</span>
+        </a>
+
+        <!-- Primary Action 2 -->
+        <a href="/ask" class="px-5 py-2.5 rounded bg-[#1B294B] hover:bg-[#24355A] text-white font-bold text-sm border border-[#D7A940]/60 shadow transition-all flex items-center space-x-2">
+          <svg class="w-4 h-4 text-[#D7A940]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          <span data-i18n="btn_ask_action">ASK THE ARCHIVE</span>
+        </a>
+
+        <!-- Secondary Action 1 -->
+        <a href="/timeline-view" class="px-4 py-2.5 rounded bg-transparent hover:bg-white/10 text-gray-200 hover:text-white font-medium text-xs border border-gray-400/60 transition-all flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span data-i18n="btn_view_timeline">VIEW TIMELINE</span>
+        </a>
+
+        <!-- Secondary Action 2 -->
+        <a href="/manuscripts" class="px-4 py-2.5 rounded bg-transparent hover:bg-white/10 text-gray-200 hover:text-white font-medium text-xs border border-gray-400/60 transition-all flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span data-i18n="btn_explore_manuscripts">EXPLORE MANUSCRIPTS</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Archival Principle Banner -->
+  <div class="bg-[#0D1527] text-white py-3 border-b border-[#D7A940]/40">
+    <div class="global-container flex flex-wrap justify-center items-center gap-3 sm:gap-8 text-xs font-semibold tracking-wider">
+      <div class="flex items-center space-x-1.5 text-gray-300">
+        <span class="text-[#D7A940]">01.</span>
+        <span data-i18n="principle_preserve">PRESERVE</span>
+      </div>
+      <span class="text-gray-600 hidden sm:inline">→</span>
+      <div class="flex items-center space-x-1.5 text-gray-300">
+        <span class="text-[#D7A940]">02.</span>
+        <span data-i18n="principle_discover">DISCOVER</span>
+      </div>
+      <span class="text-gray-600 hidden sm:inline">→</span>
+      <div class="flex items-center space-x-1.5 text-gray-300">
+        <span class="text-[#D7A940]">03.</span>
+        <span data-i18n="principle_understand">UNDERSTAND</span>
+      </div>
+      <span class="text-gray-600 hidden sm:inline">→</span>
+      <div class="flex items-center space-x-1.5 text-gray-300">
+        <span class="text-[#D7A940]">04.</span>
+        <span data-i18n="principle_verify">VERIFY</span>
+      </div>
+      <span class="text-gray-600 hidden sm:inline">→</span>
+      <div class="flex items-center space-x-1.5 text-gray-300">
+        <span class="text-[#D7A940]">05.</span>
+        <span data-i18n="principle_learn">LEARN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archival Transition Divider -->
+  <div class="archival-section-divider" aria-hidden="true">
+    <span class="divider-motif">✦ HISTORICAL ARCHIVE & EVIDENCE ✦</span>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 global-container py-12 space-y-12">
+
+    <!-- Suggested Research Questions Grid -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="font-heading-cinzel text-xl font-bold text-[#141F39]" data-i18n="section_inquire_title">Inquire into the Archive</h2>
+          <p class="text-xs text-gray-600" data-i18n="section_inquire_subtitle">Select verified research inquiries supported by primary citations</p>
+        </div>
+        <span class="text-xs text-[#8C5B08] font-semibold bg-[#FFF6E5] px-2.5 py-1 rounded border border-[#F5D399]" data-i18n="badge_fully_grounded">
+          ✓ Fully Grounded Verification
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <a href="/ask?q=What%20did%20Ambedkar%20say%20about%20labour%20rights%3F" class="archival-card p-4 rounded-lg flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center space-x-1 text-[11px] font-semibold text-[#8C5B08] mb-2">
+              <svg class="w-3.5 h-3.5 text-[#D7A940]" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              <span>BAWS Vol. 10</span>
+            </div>
+            <h3 class="text-sm font-bold text-[#141F39] group-hover:text-[#B88B28] transition-colors leading-snug" data-i18n="q1_title">
+              What did Ambedkar say about labour rights?
+            </h3>
+            <p class="text-xs text-gray-500 mt-2 line-clamp-2" data-i18n="q1_desc">8-hour work day, tripartite consultations, maternity benefits & coal mine safety regulations.</p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-[#141F39] font-medium">
+            <span data-i18n="label_research_query">Research Query</span>
+            <span class="text-[#D7A940] group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+
+        <a href="/ask?q=Summarise%20the%20Mahad%20Satyagraha" class="archival-card p-4 rounded-lg flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center space-x-1 text-[11px] font-semibold text-[#8C5B08] mb-2">
+              <svg class="w-3.5 h-3.5 text-[#D7A940]" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              <span>Historical Manuscript (1927)</span>
+            </div>
+            <h3 class="text-sm font-bold text-[#141F39] group-hover:text-[#B88B28] transition-colors leading-snug" data-i18n="q2_title">
+              Summarise the Mahad Satyagraha
+            </h3>
+            <p class="text-xs text-gray-500 mt-2 line-clamp-2" data-i18n="q2_desc">Historic March 1927 assertion at Chavdar Tale establishing equal access to water as human equality.</p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-[#141F39] font-medium">
+            <span data-i18n="label_research_query">Research Query</span>
+            <span class="text-[#D7A940] group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+
+        <a href="/ask?q=What%20does%20the%20drafting%20record%20say%20about%20Article%2017%3F" class="archival-card p-4 rounded-lg flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center space-x-1 text-[11px] font-semibold text-[#8C5B08] mb-2">
+              <svg class="w-3.5 h-3.5 text-[#D7A940]" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              <span>CAD Vol. VII</span>
+            </div>
+            <h3 class="text-sm font-bold text-[#141F39] group-hover:text-[#B88B28] transition-colors leading-snug" data-i18n="q3_title">
+              What does the drafting record say about Article 17?
+            </h3>
+            <p class="text-xs text-gray-500 mt-2 line-clamp-2" data-i18n="q3_desc">Abolition of Untouchability and constitutional command requiring statutory criminal penalties.</p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-[#141F39] font-medium">
+            <span data-i18n="label_research_query">Research Query</span>
+            <span class="text-[#D7A940] group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+
+        <a href="/ask?q=How%20did%20Ambedkar%20define%20social%20democracy%3F" class="archival-card p-4 rounded-lg flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center space-x-1 text-[11px] font-semibold text-[#8C5B08] mb-2">
+              <svg class="w-3.5 h-3.5 text-[#D7A940]" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              <span>CAD Final Speech (1949)</span>
+            </div>
+            <h3 class="text-sm font-bold text-[#141F39] group-hover:text-[#B88B28] transition-colors leading-snug" data-i18n="q4_title">
+              How did Ambedkar define social democracy?
+            </h3>
+            <p class="text-xs text-gray-500 mt-2 line-clamp-2" data-i18n="q4_desc">"A way of life which recognizes liberty, equality and fraternity as the principles of life."</p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-[#141F39] font-medium">
+            <span data-i18n="label_research_query">Research Query</span>
+            <span class="text-[#D7A940] group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Featured Archival Collections & Artifacts -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Featured Document of the Day -->
+      <div class="lg:col-span-2 archival-card rounded-lg p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#8C5B08] bg-[#FBF4E2] px-2.5 py-1 rounded" data-i18n="featured_record_tag">
+              Today's Featured Archival Record
+            </span>
+            <span class="text-xs text-gray-500">25 November 1949</span>
+          </div>
+          <h3 class="font-heading-cinzel text-xl font-bold text-[#141F39] mb-3" data-i18n="featured_record_title">
+            Closing Address to the Constituent Assembly: The Principles of Social Democracy
+          </h3>
+          <p class="font-serif-archival text-gray-800 text-sm italic leading-relaxed mb-4 border-l-2 border-[#D7A940] pl-4" data-i18n="featured_record_quote">
+            "On the 26th of January 1950, we are going to enter into a life of contradictions. In politics we will have equality and in social and economic life we will have inequality. In politics we will be recognizing the principle of one man one vote and one vote one value. In our social and economic life, we shall continue to deny the principle of one man one value..."
+          </p>
+          <div class="text-xs text-gray-600 space-y-1">
+            <div><strong>Source:</strong> Constituent Assembly Debates Archive, Parliament of India</div>
+            <div><strong>Volume:</strong> Verbatim Proceedings • <strong>Citation:</strong> CAD 25-Nov-1949, p. 12–15</div>
+            <div><strong>Provenance:</strong> <span class="badge-verified text-[10px] px-2 py-0.5 rounded font-bold">AUTHENTICATED PARLIAMENTARY RECORD</span></div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3">
+          <button onclick="DAIC.openOriginalDocument('CAD_FINAL_SPEECH_1949', 12)" class="px-4 py-2 bg-[#141F39] hover:bg-[#202E4E] text-[#D7A940] text-xs font-semibold rounded shadow transition-colors flex items-center space-x-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span data-i18n="btn_open_archival_record">Open Archival Record</span>
+          </button>
+          <a href="/ask?q=How%20did%20Ambedkar%20define%20social%20democracy%3F" class="text-xs text-[#141F39] font-bold hover:text-[#B88B28] flex items-center space-x-1">
+            <span data-i18n="btn_ask_ai_record">Ask AI Assistant about this Record</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Featured Manuscript Highlight -->
+      <div class="archival-card rounded-lg p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#245A3F] bg-[#E8F3ED] px-2.5 py-1 rounded" data-i18n="featured_manuscript_tag">
+              Featured Manuscript
+            </span>
+            <span class="text-xs text-gray-500">1927</span>
+          </div>
+          <h4 class="font-heading-cinzel font-bold text-base text-[#141F39] mb-2" data-i18n="featured_manuscript_title">
+            Mahad Satyagraha Declaration (Chavdar Tale)
+          </h4>
+          <div class="h-32 bg-gray-100 rounded border border-gray-200 flex items-center justify-center p-3 mb-3 relative overflow-hidden group">
+            <!-- Manuscript decorative preview -->
+            <div class="text-[10px] text-gray-400 font-serif-archival select-none italic text-center">
+              "We are not going to the Chavdar Tank merely to drink water...<br>We are going to assert that we too are human beings like others."
+            </div>
+            <div class="absolute inset-0 bg-[#141F39]/10 group-hover:bg-[#141F39]/20 transition-all flex items-center justify-center">
+              <span class="text-xs font-bold text-[#141F39] bg-white/90 px-3 py-1 rounded shadow">Dual OCR & Facsimile Viewer</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-600 line-clamp-3">
+            Facsimile digitized at 600 DPI with multi-pass OCR transcription and archivist validation.
+          </p>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-gray-200">
+          <a href="/manuscripts" class="w-full block text-center px-4 py-2 bg-white hover:bg-gray-50 text-[#141F39] text-xs font-semibold rounded border border-gray-300 transition-colors" data-i18n="btn_inspect_facsimile">
+            Inspect Facsimile & OCR
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick Navigation Panels -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Interactive Timeline Card -->
+      <div class="archival-card p-5 rounded-lg flex space-x-4 items-start">
+        <div class="w-10 h-10 rounded bg-[#FBF4E2] text-[#8C5B08] flex items-center justify-center shrink-0 border border-[#EAD293]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4 class="font-heading-cinzel font-bold text-sm text-[#141F39]" data-i18n="nav_timeline">Historical Timeline</h4>
+          <p class="text-xs text-gray-600 mt-1">Explore chronologically mapped milestones from 1891 to 1956 with linked primary documents.</p>
+          <a href="/timeline-view" class="inline-block mt-3 text-xs font-bold text-[#B88B28] hover:underline"><span data-i18n="btn_view_timeline">View Timeline</span> →</a>
+        </div>
+      </div>
+
+      <!-- Knowledge Graph Card -->
+      <div class="archival-card p-5 rounded-lg flex space-x-4 items-start">
+        <div class="w-10 h-10 rounded bg-[#E8F3ED] text-[#245A3F] flex items-center justify-center shrink-0 border border-[#B7DECA]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+        </div>
+        <div>
+          <h4 class="font-heading-cinzel font-bold text-sm text-[#141F39]" data-i18n="nav_knowledge">Knowledge Map</h4>
+          <p class="text-xs text-gray-600 mt-1">Interactive network graph linking People, Ideas, Documents, Events, Institutions, and Legal Articles.</p>
+          <a href="/knowledge-view" class="inline-block mt-3 text-xs font-bold text-[#B88B28] hover:underline">Explore Knowledge Graph →</a>
+        </div>
+      </div>
+
+      <!-- Curated Stories Card -->
+      <div class="archival-card p-5 rounded-lg flex space-x-4 items-start">
+        <div class="w-10 h-10 rounded bg-[#FFF6E5] text-[#8C5B08] flex items-center justify-center shrink-0 border border-[#F5D399]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+        </div>
+        <div>
+          <h4 class="font-heading-cinzel font-bold text-sm text-[#141F39]" data-i18n="nav_stories">Digital Heritage Stories</h4>
+          <p class="text-xs text-gray-600 mt-1">Deep narrative journeys grounded in primary archival citations: Constitution, Mahad, and Labour standards.</p>
+          <a href="/stories-view" class="inline-block mt-3 text-xs font-bold text-[#B88B28] hover:underline">Read Heritage Stories →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Persistent Global Footer -->
+  <div id="global-footer"></div>
+
+  <!-- Global Scripts -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/heritage-bg.js"></script>
+</body>
+</html>

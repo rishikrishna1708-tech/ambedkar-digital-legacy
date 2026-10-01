@@ -1,0 +1,474 @@
+/**
+ * Ambedkar Digital Heritage Archive - Premium Heritage Background System
+ * 
+ * Museum-grade ambient motion:
+ * - 24-spoke Ashoka Chakra slow continuous rotation
+ * - Faded historical Ambedkar portrait with archival vignette
+ * - Floating archival manuscript & constitution fragments
+ * - Digitized knowledge particles (18-25 nodes with connecting hairlines)
+ * - Archival OCR scanning line
+ * - Mouse parallax micro-movements
+ * - Full reduced-motion and mobile responsiveness
+ * - 100% pointer-events: none, aria-hidden, zero layout disruption
+ */
+
+:root {
+  --heritage-navy: #0B1426;
+  --heritage-navy-secondary: #14213D;
+  --heritage-navy-light: #1A2B4C;
+  --heritage-gold: #D7A940;
+  --heritage-gold-warm: #C99A32;
+  --heritage-gold-faint: rgba(215, 169, 64, 0.08);
+  --heritage-parchment: #F8F4E8;
+  --heritage-teal: #3B7558;
+  --heritage-white: #F5F1E8;
+}
+
+/* ==========================================================================
+   1. Base Archival Background Containers
+   ========================================================================== */
+
+.archival-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none !important;
+  user-select: none !important;
+  z-index: 0;
+  background-color: transparent;
+}
+
+.archival-background.hero-variant {
+  background: radial-gradient(circle at 75% 30%, rgba(20, 33, 61, 0.85) 0%, rgba(11, 20, 38, 0.98) 75%),
+              linear-gradient(145deg, #0B1426 0%, #14213D 60%, #0E1A33 100%);
+}
+
+.archival-background.fixed-system {
+  position: fixed;
+  z-index: -1;
+  background: #F8F4E8;
+}
+
+.archival-background.dark-fixed-system {
+  position: fixed;
+  z-index: -1;
+  background: #0B1426;
+}
+
+/* ==========================================================================
+   2. Rotating 24-Spoke Ashoka Chakra
+   ========================================================================== */
+
+@keyframes slowChakraRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ashoka-chakra {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0.065;
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+
+.ashoka-chakra svg,
+.ashoka-chakra img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: slowChakraRotation 55s linear infinite;
+  transform-origin: center center;
+}
+
+/* Chakra Hero Position: Subtle, grand, centered slightly to right-center */
+.ashoka-chakra.hero-chakra {
+  width: 680px;
+  height: 680px;
+  top: 50%;
+  right: 8%;
+  margin-top: -340px;
+  opacity: 0.07;
+  filter: drop-shadow(0 0 25px rgba(215, 169, 64, 0.2));
+}
+
+.ashoka-chakra.global-ambient-chakra {
+  width: 850px;
+  height: 850px;
+  top: 15%;
+  left: 50%;
+  margin-left: -425px;
+  opacity: 0.035;
+}
+
+/* ==========================================================================
+   3. Dr. B. R. Ambedkar Archival Portrait
+   ========================================================================== */
+
+.ambedkar-portrait {
+  position: absolute;
+  pointer-events: none;
+  right: 3%;
+  top: 10%;
+  bottom: 5%;
+  width: 420px;
+  max-width: 38vw;
+  opacity: 0.055;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+  /* Soft archival vignette gradient mask so portrait disappears into navy background */
+  -webkit-mask-image: radial-gradient(ellipse 65% 70% at 55% 45%, black 25%, rgba(0, 0, 0, 0.4) 60%, transparent 85%);
+  mask-image: radial-gradient(ellipse 65% 70% at 55% 45%, black 25%, rgba(0, 0, 0, 0.4) 60%, transparent 85%);
+}
+
+.ambedkar-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: grayscale(100%) sepia(20%) contrast(90%);
+}
+
+/* ==========================================================================
+   4. Floating Archival Document Layers
+   ========================================================================== */
+
+@keyframes floatDoc1 {
+  0% {
+    transform: translate(-18px, 0px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate(12px, -8px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translate(20px, 6px) rotate(0.5deg);
+  }
+}
+
+@keyframes floatDoc2 {
+  0% {
+    transform: translate(10px, 12px) rotate(1.5deg);
+  }
+  50% {
+    transform: translate(-8px, -6px) rotate(0.5deg);
+  }
+  100% {
+    transform: translate(-15px, -14px) rotate(-0.5deg);
+  }
+}
+
+@keyframes floatDoc3 {
+  0% {
+    transform: scale(1.0) translateY(0);
+  }
+  50% {
+    transform: scale(1.025) translateY(-5px);
+  }
+  100% {
+    transform: scale(1.0) translateY(0);
+  }
+}
+
+.archival-document {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.038;
+  filter: blur(0.3px) sepia(15%);
+  will-change: transform;
+  border-radius: 4px;
+}
+
+.archival-document.doc-layer-1 {
+  width: 320px;
+  height: 440px;
+  top: 15%;
+  left: 4%;
+  animation: floatDoc1 32s ease-in-out infinite alternate;
+}
+
+.archival-document.doc-layer-2 {
+  width: 280px;
+  height: 380px;
+  bottom: 8%;
+  left: 18%;
+  animation: floatDoc2 38s ease-in-out infinite alternate;
+  opacity: 0.035;
+}
+
+.archival-document.doc-layer-3 {
+  width: 360px;
+  height: 480px;
+  top: 8%;
+  right: 18%;
+  animation: floatDoc3 35s ease-in-out infinite;
+  opacity: 0.03;
+}
+
+/* ==========================================================================
+   5. Digital Archive Particles Canvas
+   ========================================================================== */
+
+.archive-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   6. OCR Scanning Effect
+   ========================================================================== */
+
+@keyframes ocrScanMove {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.022;
+  }
+  90% {
+    opacity: 0.022;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.ocr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(215, 169, 64, 0.5) 15%, 
+    rgba(215, 169, 64, 0.9) 50%, 
+    rgba(215, 169, 64, 0.5) 85%, 
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: ocrScanMove 22s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   7. Archival Transition Dividers Between Sections
+   ========================================================================== */
+
+.archival-section-divider {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.archival-section-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(215, 169, 64, 0.15) 20%, 
+    rgba(215, 169, 64, 0.45) 50%, 
+    rgba(215, 169, 64, 0.15) 80%, 
+    transparent 100%
+  );
+}
+
+.archival-section-divider .divider-motif {
+  position: relative;
+  background: var(--heritage-parchment);
+  padding: 0 16px;
+  color: var(--heritage-gold);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.8;
+}
+
+.archival-section-divider.dark-variant .divider-motif {
+  background: var(--heritage-navy);
+}
+
+/* ==========================================================================
+   8. Knowledge Network / RAG & OCR Visual Breadcrumbs
+   ========================================================================== */
+
+@keyframes pulseGoldNode {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.9;
+  }
+}
+
+@keyframes lineBeam {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.knowledge-network {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.knowledge-network-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.kn-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #D7A940;
+}
+
+.kn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #D7A940;
+  box-shadow: 0 0 6px rgba(215, 169, 64, 0.5);
+  animation: pulseGoldNode 3s infinite ease-in-out;
+}
+
+.kn-arrow {
+  color: rgba(215, 169, 64, 0.4);
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   9. Parallax Layers & Hardware Acceleration
+   ========================================================================== */
+
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ==========================================================================
+   10. Accessibility & Reduced Motion Modes
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .ashoka-chakra svg,
+  .ashoka-chakra img,
+  .ashoka-chakra {
+    animation: none !important;
+  }
+
+  .archival-document {
+    animation: none !important;
+  }
+
+  .ocr-scan-line {
+    display: none !important;
+  }
+
+  .archive-particles canvas {
+    display: none !important;
+  }
+
+  .parallax-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .kn-dot {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   11. Responsive Behavior
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .ashoka-chakra.hero-chakra {
+    width: 520px;
+    height: 520px;
+    margin-top: -260px;
+    right: 2%;
+    opacity: 0.055;
+  }
+
+  .ambedkar-portrait {
+    width: 320px;
+    max-width: 45vw;
+    opacity: 0.08;
+    right: 0;
+  }
+
+  .archival-document.doc-layer-3 {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ashoka-chakra.hero-chakra {
+    width: 360px;
+    height: 360px;
+    margin-top: -180px;
+    right: -10%;
+    opacity: 0.045;
+  }
+
+  .ambedkar-portrait {
+    width: 200px;
+    max-width: 50vw;
+    opacity: 0.065;
+    right: -20px;
+    top: 5%;
+  }
+
+  .archival-document {
+    opacity: 0.025;
+  }
+
+  .archival-document.doc-layer-2,
+  .archival-document.doc-layer-3 {
+    display: none;
+  }
+
+  .ocr-scan-line {
+    opacity: 0.10;
+  }
+}
